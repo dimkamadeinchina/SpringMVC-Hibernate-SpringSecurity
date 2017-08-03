@@ -24,7 +24,7 @@ public class HibernateUtil {
     }
 
     public <T> void save(final T entity) {
-        sessionFactory.getCurrentSession().saveOrUpdate(entity);
+        sessionFactory.getCurrentSession().save(entity);
     }
 
     @SuppressWarnings("rawtypes")

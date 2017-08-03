@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class RecordServiceImpl {
 
     @Autowired
@@ -17,5 +17,9 @@ public class RecordServiceImpl {
 
     public List<Record> getRecordsByUsername(String username){
         return recordDao.getAllRecordsById(username);
+    }
+
+    public void createRecord(Record record){
+        recordDao.createRecord(record);
     }
 }

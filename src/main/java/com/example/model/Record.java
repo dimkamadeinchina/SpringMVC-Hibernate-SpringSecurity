@@ -9,7 +9,7 @@ import java.util.Date;
 public class Record implements Serializable {
 
     @Id
-    @Column(name = "id", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -22,6 +22,14 @@ public class Record implements Serializable {
     @Column(name = "amount")
     private Integer amount;
 
+    /*HERE  ???????????????????????????????????????????????????????*/
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "id_company")
+    private Integer id_company;
+    /*HERE  ???????????????????????????????????????????????????????*/
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="id", insertable = false, updatable = false)
     private Company company;
@@ -29,6 +37,17 @@ public class Record implements Serializable {
     @Column(name = "amount_date")
     @Temporal(value=TemporalType.DATE)
     private Date date;
+
+    public Record(){}
+
+    public Record(int id, User user, String phoneNumber, Integer amount, Company company, Date date) {
+        this.id = id;
+        this.user = user;
+        this.phoneNumber = phoneNumber;
+        this.amount = amount;
+        this.company = company;
+        this.date = date;
+    }
 
     public int getId() {
         return id;
@@ -76,5 +95,13 @@ public class Record implements Serializable {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setId_company(Integer id_company) {
+        this.id_company = id_company;
     }
 }

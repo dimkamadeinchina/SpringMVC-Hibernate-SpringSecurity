@@ -24,4 +24,5 @@ public class CompanyDaoImpl implements CompanyDao {
         return hibernateUtil.fetchAll(Company.class);
     }
 
+
 }

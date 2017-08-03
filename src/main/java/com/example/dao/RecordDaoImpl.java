@@ -18,10 +18,10 @@ public class RecordDaoImpl {
     private HibernateUtil hibernateUtil;
 
     public List<Record> getAllRecordsById(String username) {
-        String query = "SELECT r.* FROM history r WHERE r.username like '%"+ username +"%'";
+        String query = "SELECT r.* FROM history r WHERE r.username like '" + username + "'";
         List<Object[]> recordObjects = hibernateUtil.fetchAll(query);
         List<Record> records = new ArrayList<>();
-        for(Object[] recordObject: recordObjects) {
+        for (Object[] recordObject : recordObjects) {
             Record record = new Record();
             int id = (int) recordObject[0];
             String user = (String) recordObject[1];
@@ -39,4 +39,8 @@ public class RecordDaoImpl {
         }
         return records;
     }
+
+    public void createRecord(Record record) {
+        hibernateUtil.save(record);
     }
+}
