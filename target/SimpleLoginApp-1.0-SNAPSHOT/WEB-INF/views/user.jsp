@@ -25,12 +25,37 @@
 			<ul class="nav nav-justified">
 				<c:if test="${not empty companies}">
 					<c:forEach items="${companies}" var="company">
-					<li><a href="/company?id=<c:out value='${company.id}'/>"><c:out value="${company.name}"/></a></li>
+					<li><a href="/user/company?id=<c:out value='${company.id}'/>"><c:out value="${company.name}"/></a></li>
 					</c:forEach>
 				</c:if>
 			</ul>
 		</nav>
 	</div>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Phone number</th>
+				<th>Company</th>
+				<th>Amount</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<c:if test="${not empty records}">
+		<tbody>
+			<c:forEach items="${records}" var="record">
+				<tr>
+					<th>${record.id}</th>
+					<th>${record.phoneNumber}</th>
+					<th>${record.company.name}</th>
+					<th>${record.amount}</th>
+					<th>${record.date}</th>
+				</tr>
+			</c:forEach>
+		</tbody>
+		</c:if>
+	</table>
 
 </div>
 

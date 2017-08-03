@@ -24,18 +24,4 @@ public class CompanyDaoImpl implements CompanyDao {
         return hibernateUtil.fetchAll(Company.class);
     }
 
-   /* @Autowired
-    private SessionFactory sessionFactory;
-
-    @Override
-    public Company findById(Serializable id) {
-        return (Company) sessionFactory.getCurrentSession().get(Company.class, id);
-    }
-
-    @Override
-    public List<Company> getAllCompanies() {
-        return sessionFactory.getCurrentSession().createQuery(" FROM " + Company.class).list();
-    }*/
-
-
 }

@@ -15,7 +15,7 @@ public class CompanyServiceImpl {
     @Autowired
     private CompanyDao companyDao;
 
-    public Company getCompanyById(Long id){
+    public Company getCompanyById(int id){
         return companyDao.findById(id);
     }
 

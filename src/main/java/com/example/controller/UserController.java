@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.service.CompanyServiceImpl;
-import com.example.service.UserServiceImpl;
+import com.example.service.RecordServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +16,9 @@ public class UserController {
     @Autowired
     private CompanyServiceImpl companyService;
 
+    @Autowired
+    private RecordServiceImpl recordService;
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
         return "login";
@@ -25,7 +28,6 @@ public class UserController {
     public ModelAndView welcomePage() {
 
         ModelAndView model = new ModelAndView();
-        model.addObject("message", "This is home page. It is accessible to all roles.");
         model.setViewName("index");
 
         return model;
@@ -49,6 +51,7 @@ public class UserController {
 
         model.addObject("user", auth.getName());
         model.addObject("companies", companyService.getAllCompanies());
+        model.addObject("records", recordService.getRecordsByUsername(auth.getName()));
         model.setViewName("user");
 
         return model;
@@ -59,7 +62,7 @@ public class UserController {
     public ModelAndView accessDeniedPage() {
 
         ModelAndView model = new ModelAndView();
-        model.addObject("message", "You are not authorized to view this page.");
+        model.addObject("message", "You are not authorized to view this page. you are chert");
         model.setViewName("accessDenied");
 
         return model;
