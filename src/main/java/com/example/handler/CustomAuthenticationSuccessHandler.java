@@ -30,7 +30,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		user.setLastLoginDate(new Date());
 		userService.saveUser(user);
 
-		response.sendRedirect("/");
+		response.sendRedirect("/user");
 	}
 
 }

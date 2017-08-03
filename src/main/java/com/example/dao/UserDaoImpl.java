@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import com.example.Util.HibernateUtil;
 import com.example.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +12,7 @@ import java.io.Serializable;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
+   /* @Autowired
     private SessionFactory sessionFactory;
 
     protected Session getSession() {
@@ -26,5 +27,19 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void save(User user) {
         getSession().saveOrUpdate(user);
+    }*/
+
+   @Autowired
+    private HibernateUtil hibernateUtil;
+
+
+    @Override
+    public User findById(Serializable id) {
+        return hibernateUtil.fetchById(User.class, id);
+    }
+
+    @Override
+    public void save(User user) {
+        hibernateUtil.save(user);
     }
 }

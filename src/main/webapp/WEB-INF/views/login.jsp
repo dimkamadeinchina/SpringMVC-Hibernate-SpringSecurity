@@ -4,32 +4,36 @@
 
 <html>
 <head>
-<title>Spring Security</title>
+	<title>SIGN UP PAGE</title>
+	<link href="<c:url value="css/bootstrap.min.css" />" rel="stylesheet">
+	<link href="<c:url value="css/signin.css" />" rel="stylesheet">
 </head>
 <body>
-	<div>
-		<form action="login" method="post">
-			<fieldset>
-				<legend>Please Login</legend>
-				<c:if test="${param.error != null}">
-					<div>
-						<p>Authentication Failed : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-					</div>
-				</c:if>
-				<c:if test="${param.logout != null}">
-					<div>
-						<p>You have been logged out successfully.</p>
-					</div>
-				</c:if>
-				<label for="username">Username</label> <input type="text"
-					id="username" name="username" /> <br> <label for="password">Password</label>
-				<input type="password" id="password" name="password" /> <br>
+
+	<div class="container">
+
+		<form class="form-signin" action="login" method="post">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<c:if test="${param.error != null}">
 				<div>
-					<button type="submit">Log in</button>
+					<p>Authentication Failed : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
 				</div>
-			</fieldset>
+			</c:if>
+			<c:if test="${param.logout != null}">
+				<div>
+					<p>You have been logged out successfully.</p>
+				</div>
+			</c:if>
+			<label for="username" class="sr-only">Login</label>
+			<input type="text" id="username" name="username" class="form-control" placeholder="Login" required="" autofocus="">
+
+			<label for="password" class="sr-only">Password</label>
+			<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+			<br>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
+
 	</div>
 </body>
 </html>

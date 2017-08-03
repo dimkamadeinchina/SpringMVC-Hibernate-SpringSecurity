@@ -16,7 +16,7 @@
 	<mvc:annotation-driven />
 	
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
-	<!--<mvc:resources mapping="/resources/**" location="resources" /> -->
+	<mvc:resources mapping="/**" location="WEB-INF/resources/" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
