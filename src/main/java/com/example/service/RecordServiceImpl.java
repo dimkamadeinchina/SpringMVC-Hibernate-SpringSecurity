@@ -26,4 +26,8 @@ public class RecordServiceImpl {
     public List<Record> getLimitByUsername(String username, int limit) {
         return recordDao.getLimitRecordsById(username, limit);
     }
+
+    public List<Record> getRecordsByCompany(String username, int id){
+        return recordDao.getRecordsByCompany(username, id);
+    }
 }

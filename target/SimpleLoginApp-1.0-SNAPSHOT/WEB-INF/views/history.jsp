@@ -22,9 +22,10 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Company</th>
+				<th data-toggle="modal" data-target=".bs-example-modal-sm">Company</th>
 				<th>Amount</th>
 				<th>Date</th>
+				<th></th>
 			</tr>
 		</thead>
 	</table>
@@ -53,7 +54,29 @@
 		</c:if>
 	</table>
 
-</div>
 
+
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<form class="form-signin" method="get" action="/user/history/filter">
+
+					<div class="btn-group" data-toggle="buttons">
+						<c:forEach items="${companies}" var="company">
+						<label class="btn btn-primary">
+							<input type="radio" name="company" value="${company.id}" id="${company.id}" autocomplete="off" checked> ${company.name}
+						</label>
+						</c:forEach>
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">FILTER IT</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+	<script src="<c:url value="/js/jquery.js" />"></script>
+	<script src="<c:url value="/js/bootstrap.min.js" />"></script>
 </body>
 </html>
