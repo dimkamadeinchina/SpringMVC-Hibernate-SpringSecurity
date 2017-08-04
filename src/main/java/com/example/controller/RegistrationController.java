@@ -37,9 +37,11 @@ public class RegistrationController {
         }
 
         String pas = "123456";
+
         Role role = roleService.getRole(1);
         Set<Role> roleses = new HashSet<>();
         roleses.add(role);
+
         User user = new User(phone, pas,
                 100,
                 0,

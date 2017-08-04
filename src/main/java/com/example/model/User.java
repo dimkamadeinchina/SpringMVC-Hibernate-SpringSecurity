@@ -34,7 +34,7 @@ public class User implements Serializable {
     @Column(name = "last_login_date", length = 23)
     private Date lastLoginDate;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "authorities", joinColumns = {
             @JoinColumn(name = "user", nullable = false, updatable = false) }, inverseJoinColumns = {
             @JoinColumn(name = "role", nullable = false, updatable = false) })
