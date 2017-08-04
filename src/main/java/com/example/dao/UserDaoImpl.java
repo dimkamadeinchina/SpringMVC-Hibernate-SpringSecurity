@@ -20,8 +20,15 @@ public class UserDaoImpl implements UserDao {
         return hibernateUtil.fetchById(User.class, id);
     }
 
+
     @Override
     public void save(User user) {
         hibernateUtil.save(user);
     }
+
+    @Override
+    public void update(User user) {
+        hibernateUtil.update(user);
+    }
+
 }

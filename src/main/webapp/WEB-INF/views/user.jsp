@@ -17,7 +17,7 @@
 				<li role="presentation"><form:form action="logout"><div><button type="submit">Logout</button></div></form:form></li>
 			</ul>
 		</nav>
-		<h3 class="text-muted">Hello, ${user}</h3>
+		<h3 class="text-muted">Hello, ${user.username}. Your balance = ${user.balance}</h3>
 	</div>
 
 	<div class="masthead">
@@ -53,19 +53,20 @@
 					<th>${record.date}</th>
 				</tr>
 			</c:forEach>
+			<c:if test="${records.size() == 3}">
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th><a href="/user/history">see all</a></th>
+				</tr>
+			</c:if>
 		</tbody>
 		</c:if>
 	</table>
 
 </div>
-
-
-<!--<form:form action="logout">
-		<div>
-			<button type="submit">Logout</button>
-		</div>
-	</form:form>
-	-->
 
 </body>
 </html>

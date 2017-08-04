@@ -22,4 +22,8 @@ public class RecordServiceImpl {
     public void createRecord(Record record){
         recordDao.createRecord(record);
     }
+
+    public List<Record> getLimitByUsername(String username, int limit) {
+        return recordDao.getLimitRecordsById(username, limit);
+    }
 }

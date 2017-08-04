@@ -2,6 +2,8 @@ package com.example.controller;
 
 import com.example.service.CompanyServiceImpl;
 import com.example.service.RecordServiceImpl;
+import com.example.service.UserService;
+import com.example.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +20,9 @@ public class UserController {
 
     @Autowired
     private RecordServiceImpl recordService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
@@ -49,9 +54,9 @@ public class UserController {
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        model.addObject("user", auth.getName());
+        model.addObject("user", userService.getUser(auth.getName()));
         model.addObject("companies", companyService.getAllCompanies());
-        model.addObject("records", recordService.getRecordsByUsername(auth.getName()));
+        model.addObject("records", recordService.getLimitByUsername(auth.getName(), 3));
         model.setViewName("user");
 
         return model;

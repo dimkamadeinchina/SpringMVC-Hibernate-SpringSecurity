@@ -40,15 +40,6 @@ public class Record implements Serializable {
 
     public Record(){}
 
-    public Record(int id, User user, String phoneNumber, Integer amount, Company company, Date date) {
-        this.id = id;
-        this.user = user;
-        this.phoneNumber = phoneNumber;
-        this.amount = amount;
-        this.company = company;
-        this.date = date;
-    }
-
     public int getId() {
         return id;
     }

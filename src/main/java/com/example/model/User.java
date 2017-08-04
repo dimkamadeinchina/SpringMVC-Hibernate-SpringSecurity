@@ -22,6 +22,9 @@ public class User implements Serializable {
     @Column(name = "failed_logins")
     private Integer failedLogins;
 
+    @Column(name = "balance")
+    private Integer balance;
+
     @Column(name = "enabled")
     private Boolean enabled;
 
@@ -45,11 +48,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public User(String username, String password, Integer failedLogins,
+    public User(String username, String password, Integer balance, Integer failedLogins,
                 Boolean enabled, Boolean locked, Date lastLoginDate,
                 Set<Role> roleses) {
         this.username = username;
         this.password = password;
+        this.balance = balance;
         this.failedLogins = failedLogins;
         this.enabled = enabled;
         this.locked = locked;
@@ -113,4 +117,11 @@ public class User implements Serializable {
         this.roleses = roleses;
     }
 
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
 }

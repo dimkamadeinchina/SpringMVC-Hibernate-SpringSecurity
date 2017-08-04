@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service("userService")
-@Transactional(readOnly = true)
+@Transactional
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
@@ -60,5 +60,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public void saveUser(User user) {
         userDao.save(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userDao.update(user);
     }
 }

@@ -45,7 +45,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 				user.setLocked(true);
 			}
 
-			userService.saveUser(user);
+			userService.updateUser(user);
 		}
 	}
 

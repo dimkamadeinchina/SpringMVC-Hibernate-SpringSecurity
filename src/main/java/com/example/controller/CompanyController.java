@@ -2,10 +2,10 @@ package com.example.controller;
 
 import com.example.model.Company;
 import com.example.model.Record;
+import com.example.model.User;
 import com.example.service.CompanyServiceImpl;
 import com.example.service.RecordServiceImpl;
 import com.example.service.UserService;
-import com.example.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -43,10 +43,13 @@ public class CompanyController {
     @RequestMapping(value = "createRecord", method = RequestMethod.POST)
     public ModelAndView createRecord(@ModelAttribute Record record, int id_company){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-       /*HERE  ???????????????????????????????????????????????????????*/
+
+        User user = userService.getUser(auth.getName());
+        user.setBalance(user.getBalance() - record.getAmount());
+        userService.updateUser(user);
+
         record.setId_company(id_company);
         record.setUsername(auth.getName());
-        /*HERE  ???????????????????????????????????????????????????????*/
         record.setDate(new Date());
         recordService.createRecord(record);
         return new ModelAndView("redirect:/user");

@@ -28,7 +28,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		com.example.model.User user = userService.getUser(loginUser.getUsername());
 		user.setFailedLogins(0);
 		user.setLastLoginDate(new Date());
-		userService.saveUser(user);
+		userService.updateUser(user);
 
 		response.sendRedirect("/user");
 	}
