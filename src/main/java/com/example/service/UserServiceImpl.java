@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private List<GrantedAuthority> getAuthorities(User user) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-        for (Role role : user.getRoleses()) {
+        for (Role role : user.getRoles()) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public void saveLastLoginDate(String username) {
         User user = userDao.findById(username);
         user.setLastLoginDate(new Date());
-        userDao.save(user);
+        userDao.update(user);
     }
 
     @Override

@@ -28,13 +28,24 @@
 		</form>
 		</c:if>
 		<c:if test="${password != null}">
-		<div class="row marketing">
-			<div class="col-lg-12">
-				<h4>CONGRADULATION</h4>
-				<p>USERNAME  ${username}</p>
-				<p>PASSWORD  ${password}</p>
+			<div class="header clearfix">
+				<nav>
+					<ul class="nav nav-pills pull-right">
+						<li role="presentation"><a href="/login">Login</a></li>
+						<li role="presentation"><a href="/registration">Registration</a></li>
+						<li role="presentation"><a href="/about">Information</a></li>
+					</ul>
+				</nav>
+				<h3 class="text-muted">Main page</h3>
 			</div>
-		</div>
+
+			<div class="row marketing">
+				<div class="col-lg-12">
+					<h4>CONGRADULATION</h4>
+					<p>USERNAME  ${username}</p>
+					<p>PASSWORD  ${password}</p>
+				</div>
+			</div>
 		</c:if>
 
 	</div>

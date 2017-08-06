@@ -31,7 +31,6 @@ public class HibernateUtil {
         sessionFactory.getCurrentSession().update(entity);
     }
 
-
     @SuppressWarnings("rawtypes")
     public <T> List fetchAll(String query) {
         return sessionFactory.getCurrentSession().createSQLQuery(query).list();

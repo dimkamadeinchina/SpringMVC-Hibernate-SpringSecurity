@@ -8,27 +8,25 @@ import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 
 @Repository
-public class UserDaoImpl implements UserDao {
+    public class UserDaoImpl implements UserDao {
 
 
-   @Autowired
-    private HibernateUtil hibernateUtil;
+       @Autowired
+        private HibernateUtil hibernateUtil;
 
+        @Override
+        public User findById(Serializable id) {
+            return hibernateUtil.fetchById(User.class, id);
+        }
 
-    @Override
-    public User findById(Serializable id) {
-        return hibernateUtil.fetchById(User.class, id);
-    }
+        @Override
+        public void save(User user) {
+            hibernateUtil.save(user);
+        }
 
-
-    @Override
-    public void save(User user) {
-        hibernateUtil.save(user);
-    }
-
-    @Override
-    public void update(User user) {
-        hibernateUtil.update(user);
-    }
+        @Override
+        public void update(User user) {
+            hibernateUtil.update(user);
+        }
 
 }

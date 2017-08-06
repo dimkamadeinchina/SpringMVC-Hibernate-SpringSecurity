@@ -10,8 +10,6 @@ import java.util.Set;
 @Table(name = "users")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1948638898199176136L;
-
     @Id
     @Column(name = "username", unique = true, nullable = false, length = 100)
     private String username;
@@ -34,11 +32,17 @@ public class User implements Serializable {
     @Column(name = "last_login_date", length = 23)
     private Date lastLoginDate;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "authorities", joinColumns = {
-            @JoinColumn(name = "user", nullable = false, updatable = false) }, inverseJoinColumns = {
-            @JoinColumn(name = "role", nullable = false, updatable = false) })
-    private Set<Role> roleses = new HashSet<Role>(0);
+    @ManyToMany
+    @JoinTable(name = "authorities", joinColumns = @JoinColumn(name = "username"), inverseJoinColumns = @JoinColumn(name = "role"))
+    private Set<Role> roles;
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public User() {
     }
@@ -50,7 +54,7 @@ public class User implements Serializable {
 
     public User(String username, String password, Integer balance, Integer failedLogins,
                 Boolean enabled, Boolean locked, Date lastLoginDate,
-                Set<Role> roleses) {
+                Set<Role> roles) {
         this.username = username;
         this.password = password;
         this.balance = balance;
@@ -58,11 +62,12 @@ public class User implements Serializable {
         this.enabled = enabled;
         this.locked = locked;
         this.lastLoginDate = lastLoginDate;
-        this.roleses = roleses;
+        this.roles = roles;
     }
 
+
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     public void setUsername(String username) {
@@ -70,7 +75,7 @@ public class User implements Serializable {
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public void setPassword(String password) {
@@ -78,43 +83,11 @@ public class User implements Serializable {
     }
 
     public Integer getFailedLogins() {
-        return this.failedLogins;
+        return failedLogins;
     }
 
     public void setFailedLogins(Integer failedLogins) {
         this.failedLogins = failedLogins;
-    }
-
-    public Boolean getEnabled() {
-        return this.enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Boolean getLocked() {
-        return this.locked;
-    }
-
-    public void setLocked(Boolean locked) {
-        this.locked = locked;
-    }
-
-    public Date getLastLoginDate() {
-        return this.lastLoginDate;
-    }
-
-    public void setLastLoginDate(Date lastLoginDate) {
-        this.lastLoginDate = lastLoginDate;
-    }
-
-    public Set<Role> getRoleses() {
-        return this.roleses;
-    }
-
-    public void setRoleses(Set<Role> roleses) {
-        this.roleses = roleses;
     }
 
     public Integer getBalance() {
@@ -123,5 +96,29 @@ public class User implements Serializable {
 
     public void setBalance(Integer balance) {
         this.balance = balance;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
+    public Date getLastLoginDate() {
+        return lastLoginDate;
+    }
+
+    public void setLastLoginDate(Date lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
     }
 }

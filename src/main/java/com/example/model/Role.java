@@ -18,28 +18,19 @@ public class Role implements Serializable {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "authorities", joinColumns = {
-            @JoinColumn(name = "role", nullable = false, updatable = false) }, inverseJoinColumns = {
-            @JoinColumn(name = "user", nullable = false, updatable = false) })
-    private Set<User> users = new HashSet<User>(0);
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
-    public Role() {
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public Role(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Role(int id, String name, Set<User> users) {
-        this.id = id;
-        this.name = name;
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {
@@ -47,19 +38,11 @@ public class Role implements Serializable {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<User> getUsers() {
-        return this.users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 
 }
