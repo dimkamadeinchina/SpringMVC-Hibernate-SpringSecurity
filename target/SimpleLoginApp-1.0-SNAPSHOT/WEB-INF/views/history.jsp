@@ -25,7 +25,7 @@
 				<th data-toggle="modal" data-target=".bs-example-modal-sm">Company</th>
 				<th>Amount</th>
 				<th>Date</th>
-				<th></th>
+				<th><a href="/user/history">reset</a></th>
 			</tr>
 		</thead>
 	</table>
@@ -61,11 +61,11 @@
 			<div class="modal-content">
 				<form class="form-signin" method="get" action="/user/history/filter">
 
-					<div class="btn-group" data-toggle="buttons">
-						<c:forEach items="${companies}" var="company">
-						<label class="btn btn-primary">
-							<input type="radio" name="company" value="${company.id}" id="${company.id}" autocomplete="off" checked> ${company.name}
-						</label>
+					<div class="btn-group margin-bottom-15" data-toggle="buttons">
+						<c:forEach items="${companies}" var="company" varStatus="stat">
+								<label class="btn btn-primary ${stat.first ? 'active' : ''}"  >
+									<input type="radio" ${stat.first ? 'checked' : ''}  name="company" value="${company.id}" id="${company.id}" autocomplete="off"> ${company.name}
+								</label>
 						</c:forEach>
 					</div>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">FILTER IT</button>

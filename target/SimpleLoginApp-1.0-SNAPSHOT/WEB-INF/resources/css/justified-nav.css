@@ -56,6 +56,9 @@ body {
     border-bottom: 0;
     border-radius: 0 0 5px 5px;
 }
+.margin-bottom-15{
+    margin-bottom: 15px;
+}
 
 @media (min-width: 768px) {
     .nav-justified {

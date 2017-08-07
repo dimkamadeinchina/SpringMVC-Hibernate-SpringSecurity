@@ -40,7 +40,7 @@
 			</div>
 
 			<div class="row marketing">
-				<div class="col-lg-12">
+				<div>
 					<h4>CONGRADULATION</h4>
 					<p>USERNAME  ${username}</p>
 					<p>PASSWORD  ${password}</p>
