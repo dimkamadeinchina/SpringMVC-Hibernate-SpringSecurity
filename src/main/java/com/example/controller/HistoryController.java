@@ -31,6 +31,7 @@ public class HistoryController {
         model.addObject("user", userService.getUser(auth.getName()));
         model.addObject("records", recordService.getRecordsByUsername(auth.getName()));
         model.addObject("companies", companyService.getAllCompanies());
+        model.addObject("amounts", recordService.getMinMaxAmountByUsername(auth.getName()));
         model.setViewName("history");
 
         return model;

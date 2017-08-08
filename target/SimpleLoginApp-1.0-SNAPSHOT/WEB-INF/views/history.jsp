@@ -8,6 +8,7 @@
 	<link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
 	<link href="<c:url value="/css/jumbotron-narrow.css" />" rel="stylesheet">
 	<link href="<c:url value="/css/justified-nav.css" />" rel="stylesheet">
+	<link href="<c:url value="/css/bootstrap-slider.css" />" rel="stylesheet">
 </head>
 
 <div class="container">
@@ -22,8 +23,8 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th data-toggle="modal" data-target=".bs-example-modal-sm">Company</th>
-				<th>Amount</th>
+				<th data-toggle="modal" data-target=".bs-example-modal-sm.company">Company</th>
+				<th data-toggle="modal" data-target=".bs-example-modal-sm.amount">Amount</th>
 				<th>Date</th>
 				<th><a href="/user/history">reset</a></th>
 			</tr>
@@ -55,8 +56,8 @@
 	</table>
 
 
-
-	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	<!-- modals -->
+	<div class="modal fade bs-example-modal-sm company" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 		<div class="modal-dialog modal-sm" role="document">
 			<div class="modal-content">
 				<form class="form-signin" method="get" action="/user/history/filter">
@@ -75,8 +76,31 @@
 	</div>
 
 
+	<div class="modal fade bs-example-modal-sm amount" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<form class="form-signin" method="get" action="/user/history/filter">
+					<div class="margin-bottom-15 well">
+						Filter by amount interval: <br>
+						<b>${amounts.get("min")}</b>
+						<input id="ex2" type="text" class="span2" value="" data-slider-min="${amounts.get("min")}" data-slider-max="${amounts.get("max")}" data-slider-step="10" data-slider-value="[${amounts.get("min")},${amounts.get("max")}]"/>
+						<b>${amounts.get("max")}</b>
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">FILTER IT</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- end modals -->
 </div>
 	<script src="<c:url value="/js/jquery.js" />"></script>
 	<script src="<c:url value="/js/bootstrap.min.js" />"></script>
+	<script src="<c:url value="/js/bootstrap-slider.js" />"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#ex2").slider({});
+		});
+	</script>
 </body>
 </html>
