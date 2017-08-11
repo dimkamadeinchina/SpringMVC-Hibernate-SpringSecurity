@@ -60,7 +60,7 @@
 	<div class="modal fade bs-example-modal-sm company" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 		<div class="modal-dialog modal-sm" role="document">
 			<div class="modal-content">
-				<form class="form-signin" method="get" action="/user/history/filter">
+				<form class="form-signin" method="get" action="/user/history/filterByCompany">
 
 					<div class="btn-group margin-bottom-15" data-toggle="buttons">
 						<c:forEach items="${companies}" var="company" varStatus="stat">
@@ -79,11 +79,11 @@
 	<div class="modal fade bs-example-modal-sm amount" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 		<div class="modal-dialog modal-sm" role="document">
 			<div class="modal-content">
-				<form class="form-signin" method="get" action="/user/history/filter">
+				<form class="form-signin" method="get" action="/user/history/filterByAmount">
 					<div class="margin-bottom-15 well">
 						Filter by amount interval: <br>
 						<b>${amounts.get("min")}</b>
-						<input id="ex2" type="text" class="span2" value="" data-slider-min="${amounts.get("min")}" data-slider-max="${amounts.get("max")}" data-slider-step="10" data-slider-value="[${amounts.get("min")},${amounts.get("max")}]"/>
+						<input id="ex2" type="text" class="span2" name="amount" value="" data-slider-min="${amounts.get("min")}" data-slider-max="${amounts.get("max")}" data-slider-step="10" data-slider-value="[${amounts.get("min")},${amounts.get("max")}]"/>
 						<b>${amounts.get("max")}</b>
 					</div>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">FILTER IT</button>

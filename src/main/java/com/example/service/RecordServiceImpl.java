@@ -45,4 +45,16 @@ public class RecordServiceImpl {
     public List<Record> getRecordsByCompany(String username, int id){
         return recordDao.getRecordsByCompany(username, id);
     }
+
+    // НОВАЯ ПРИДУМКА
+    public List<Record> getRecordsByAmount(String username, int min, int max){
+        List<Record> records = recordDao.getAllRecordsById(username);
+        List<Record> filteredRecords = new ArrayList<>();
+        for(Record r : records){
+            if(r.getAmount() >= min & r.getAmount() <= max ){
+                filteredRecords.add(r);
+            }
+        }
+        return filteredRecords;
+    }
 }
